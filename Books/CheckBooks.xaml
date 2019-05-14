@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.CheckBooks"
+             x:Name="CheckBooksPage"
+             BackgroundColor="BurlyWood">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding ListOfBooks}"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Tytuł"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding Title}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Opis"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding Description}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Ilość"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding Count}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Zdjęcie"></Label>
+                                <Image HorizontalOptions="Center" WidthRequest="100" HeightRequest="100">
+                                    <Image.Source>
+                                        <FileImageSource File="{Binding Image}" />
+                                    </Image.Source>
+                                </Image>
+                                <Button Text="Wypożycz"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                Command="{Binding Source={x:Reference CheckBooksPage}, Path=BindingContext.Borrow}"
+                                CommandParameter="{Binding Id}"/>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

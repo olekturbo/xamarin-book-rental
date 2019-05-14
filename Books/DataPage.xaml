@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Books.Converters;assembly=Books"
+             x:Class="Books.DataPage"
+             BackgroundColor="BurlyWood">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="10,35,10,10">
+        <Label Text="Zmiana danych"
+        LineBreakMode="WordWrap"
+        MaxLines="2"
+        HorizontalOptions="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Entry IsEnabled="false" Text="{Binding Username.Value, Mode=TwoWay}" Placeholder="Użytkownik" Grid.Row="0" Grid.Column="0" />
+            <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry IsEnabled="false" Text="{Binding Password.Value}" Placeholder="Hasło" IsPassword="True" Grid.Row="1" Grid.Column="0" />
+            <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry Text="{Binding FirstName.Value, Mode=TwoWay}" Placeholder="Imię" Grid.Row="2" Grid.Column="0" />
+            <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" Text="{Binding FirstName.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry Text="{Binding LastName.Value}" Placeholder="Nazwisko" Grid.Row="3" Grid.Column="0" />
+            <Label Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" Text="{Binding LastName.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry IsEnabled="false" Text="{Binding Email.Value}" Placeholder="Adres E-mail" Grid.Row="4" Grid.Column="0" />
+            <Label Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry IsEnabled="false" Text="{Binding Role.Value}" Placeholder="Brak roli" Grid.Row="5" Grid.Column="0" />
+
+            <Button Text="Zmień dane"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding Change}"
+                Grid.Row="6"
+                Grid.Column="0"/>
+            <Button Text="Cofnij"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding Back}"
+                Grid.Row="7"
+                Grid.Column="0"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.MainPage"
+             BackgroundColor="BurlyWood">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Sprawdź dane"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding CheckData}"
+                Grid.Row="0"
+                Grid.Column="0"/>
+                <Label Text="{Binding DateLabel}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="0"/>
+                <Label Text="{Binding Date}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Grid.Row="2"
+                Grid.Column="0"/>
+                <Button Text="Dodaj ksiązkę"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding AddBook}"
+                Grid.Row="0"
+                Grid.Column="1"/>
+                <Button Text="Sprawdź książki"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding CheckBooks}"
+                Grid.Row="1"
+                Grid.Column="1"/>
+                <Button Text="Sprawdź wypożyczone książki"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding CheckBorrowedBooks}"
+                Grid.Row="2"
+                Grid.Column="1"/>
+            </Grid>
+            <Image WidthRequest="300"
+                   HeightRequest="300"
+                Source="http://www.pngpix.com/wp-content/uploads/2016/07/PNGPIX-COM-Book-Stack-PNG-Transparent-Image-500x491.png" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

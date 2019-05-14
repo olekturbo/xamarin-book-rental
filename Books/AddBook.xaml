@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Books.Converters;assembly=Books"
+             x:Class="Books.AddBook"
+             BackgroundColor="BurlyWood">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="10,35,10,10">
+            <Label Text="Nowa książka"
+        LineBreakMode="WordWrap"
+        MaxLines="2"
+        HorizontalOptions="Center"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Entry Text="{Binding Title.Value, Mode=TwoWay}" Placeholder="Tytuł" Grid.Row="0" Grid.Column="0" />
+                <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Title.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                <Entry Text="{Binding Description.Value, Mode=TwoWay}" Placeholder="Opis" Grid.Row="1" Grid.Column="0" />
+                <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Description.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                <Entry Text="{Binding Count.Value, Mode=TwoWay}" Placeholder="Ilość" Grid.Row="2" Grid.Column="0" />
+                <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Count.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                <Button Text="Wybierz plik"
+                 HorizontalOptions="Center"  
+                 VerticalOptions="CenterAndExpand"
+                Command="{Binding ChooseImage}"
+                Grid.Row="3"
+                Grid.Column="0"/>
+                
+                <Button Text="Dodaj Książkę"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding AddNew}"
+                Grid.Row="4"
+                Grid.Column="0"/>
+                <Button Text="Cofnij"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding Back}"
+                Grid.Row="5"
+                Grid.Column="0"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

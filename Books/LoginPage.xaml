@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Books.Converters;assembly=Books"
+             x:Class="Books.LoginPage"
+             BackgroundColor="BurlyWood">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="10,35,10,10">
+        <Label Text="Witaj w aplikacji. Zaloguj się lub zarejestruj."
+        LineBreakMode="WordWrap"
+        MaxLines="2"
+        HorizontalOptions="Center"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Entry Text="{Binding Username.Value, Mode=TwoWay}" Placeholder="Użytkownik" Grid.Row="0" Grid.Column="0" />
+            <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Username.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Entry Text="{Binding Password.Value}" Placeholder="Hasło" IsPassword="True" Grid.Row="0" Grid.Column="1" />
+            <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+            <Button Text="Zaloguj się"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding Login}"
+                Grid.Row="1"
+                Grid.Column="0"/>
+            <Button Text="Zarejestruj się"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Command="{Binding Register}"
+                Grid.Row="1"
+                Grid.Column="1"/>
+
+            <Label Text="{Binding Orientation}"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="EndAndExpand"
+                    Grid.Row="2"
+                    Grid.Column="1"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
