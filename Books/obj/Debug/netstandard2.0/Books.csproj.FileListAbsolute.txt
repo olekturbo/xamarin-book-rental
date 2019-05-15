@@ -16,3 +16,6 @@ C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\AddBook.xa
 C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\XamlC.stamp
 C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\CheckBooks.xaml.g.cs
 C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\CheckBorrowedBooks.xaml.g.cs
+C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\EditBook.xaml.g.cs
+C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\CheckUsers.xaml.g.cs
+C:\Users\Olek\source\repos\Books\Books\Books\obj\Debug\netstandard2.0\EditUser.xaml.g.cs

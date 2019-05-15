@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Books.CheckUsers"
+             x:Name="CheckUsersPage"
+             BackgroundColor="BurlyWood">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding ListOfUsers}"
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Nazwa użytkownika"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding Username}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Imię"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding FirstName}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Nazwisko"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding LastName}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Email"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding Email}"></Label>
+                                <Label FontAttributes="Bold" HorizontalOptions="Center" Text="Rola"></Label>
+                                <Label HorizontalOptions="Center" Text="{Binding Role}"></Label>
+                                <Button Text="Edytuj"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                Command="{Binding Source={x:Reference CheckUsersPage}, Path=BindingContext.Edit}"
+                                CommandParameter="{Binding Id}"/>
+                                <Button Text="Usuń"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                Command="{Binding Source={x:Reference CheckUsersPage}, Path=BindingContext.Remove}"
+                                CommandParameter="{Binding Id}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

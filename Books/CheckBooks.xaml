@@ -30,6 +30,18 @@
                                 HorizontalOptions="Center"
                                 Command="{Binding Source={x:Reference CheckBooksPage}, Path=BindingContext.Borrow}"
                                 CommandParameter="{Binding Id}"/>
+                                <Button Text="Edytuj"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                Command="{Binding Source={x:Reference CheckBooksPage}, Path=BindingContext.Edit}"
+                                CommandParameter="{Binding Id}"
+                                IsVisible="{Binding Source={x:Reference CheckBooksPage}, Path=BindingContext.IsWorker}"/>
+                                <Button Text="Usuń"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="Center"
+                                Command="{Binding Source={x:Reference CheckBooksPage}, Path=BindingContext.Remove}"
+                                CommandParameter="{Binding Id}"
+                                IsVisible="{Binding Source={x:Reference CheckBooksPage}, Path=BindingContext.IsWorker}"/>
 
                             </StackLayout>
                         </ViewCell>

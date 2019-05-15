@@ -15,6 +15,17 @@ namespace Books.ViewModels
         private readonly CheckBooks _checkBooks;
 
         private ObservableCollection<Book> _listOfBooks = new ObservableCollection<Book>();
+        private bool _isWorker;
+
+        public bool IsWorker
+        {
+            get => _isWorker;
+            set
+            {
+                _isWorker = value;
+                NotifyPropertyChange(nameof(IsWorker));
+            }
+        }
         public ObservableCollection<Book> ListOfBooks
         {
             get => _listOfBooks;
@@ -28,8 +39,17 @@ namespace Books.ViewModels
         private async Task GetAllBooks()
         {
             var foundBooks = await App.Database.GetBooksAsync();
+            var foundUser = await App.Database.GetUserByUsernameAsync(Preferences.Get("Username", "default"));
+            if(foundUser.Role.Contains("Pracownik"))
+            {
+                _isWorker = true;
+            }
+            else
+            {
+                _isWorker = false;
+            }
 
-            foreach(var item in foundBooks)
+            foreach (var item in foundBooks)
             {
                 _listOfBooks.Add(item);
             }
@@ -43,6 +63,21 @@ namespace Books.ViewModels
         }
 
         public ICommand Borrow => new Command<int>(OnClickBorrow);
+        public ICommand Edit => new Command<int>(OnClickEdit);
+        public ICommand Remove => new Command<int>(OnClickRemove);
+
+        private async void OnClickEdit(int id)
+        {
+            _checkBooks.Navigation.PushAsync(new EditBook(id));
+        }
+
+        private async void OnClickRemove(int id)
+        {
+            var foundBook = await App.Database.GetBookAsync(id);
+            await App.Database.DeleteBookAsync(foundBook);
+
+            _checkBooks.DisplayAlert("Komunikat", "Ksiazka zostala usunieta.", "OK");
+        }
         private async void OnClickBorrow(int id)
         {
             var foundUser = await App.Database.GetUserByUsernameAsync(Preferences.Get("Username", "default"));

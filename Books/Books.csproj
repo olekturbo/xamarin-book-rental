@@ -19,11 +19,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="CheckUsers.xaml.cs">
+      <DependentUpon>CheckUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="EditBook.xaml.cs">
+      <DependentUpon>EditBook.xaml</DependentUpon>
+    </Compile>
     <Compile Update="CheckBorrowedBooks.xaml.cs">
       <DependentUpon>CheckBorrowedBooks.xaml</DependentUpon>
     </Compile>
     <Compile Update="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="EditUser.xaml.cs">
+      <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

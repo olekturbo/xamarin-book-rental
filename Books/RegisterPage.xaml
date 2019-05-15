@@ -48,9 +48,17 @@
             <Entry Text="{Binding Email.Value}" Placeholder="Adres E-mail" Grid.Row="5" Grid.Column="0" />
             <Label Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
 
-            <Switch Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" IsToggled="{Binding ChooseRole}"></Switch>
-            <Label Grid.Row="6" Grid.Column="0" HorizontalOptions="Center" Text="Czy jesteś pracownikiem?" />
-
+            <Picker x:Name="picker"
+                Title="Wybierz rolę"
+                    Grid.Row="7"
+                    SelectedItem="{Binding ChooseRole}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pracownik</x:String>
+                        <x:String>Klient</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
             <Button Text="Zarejestruj się"
                 VerticalOptions="CenterAndExpand"

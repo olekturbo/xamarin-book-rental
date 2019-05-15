@@ -19,7 +19,7 @@ namespace Books.ViewModels
         private ValidatableObject<string> _firstName = new ValidatableObject<string>();
         private ValidatableObject<string> _lastName = new ValidatableObject<string>();
         private ValidatableObject<string> _email = new ValidatableObject<string>();
-        private ValidatableObject<bool> _chooseRole = new ValidatableObject<bool>();
+        private string _chooseRole;
 
         public ValidatableObject<string> Username
         {
@@ -31,13 +31,13 @@ namespace Books.ViewModels
             }
         }
 
-        public ValidatableObject<bool> ChooseRole
+        public string ChooseRole
         {
             get => _chooseRole;
             set
             {
                 _chooseRole = value;
-                NotifyPropertyChange(nameof(_chooseRole));
+                NotifyPropertyChange(nameof(ChooseRole));
             }
         }
 
@@ -172,7 +172,7 @@ namespace Books.ViewModels
             user.FirstName = _firstName.Value;
             user.LastName = _lastName.Value;
             user.Email = _email.Value;
-            user.Role = _chooseRole.Value ? "Klient" : "Pracownik";
+            user.Role = _chooseRole;
             await App.Database.SaveUserAsync(user);
 
             _registerPage.DisplayAlert("Komunikat", "Dziękujemy " + _username.Value + " - zostałeś zarejestrowany.", "OK");
